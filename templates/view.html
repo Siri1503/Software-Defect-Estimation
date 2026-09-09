@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}View Dataset{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">Dataset Preview</p><h1>View uploaded data</h1><p>{{ rows }} rows · {{ cols }} columns</p></section>
+<div class="card table-wrap">{{ table|safe }}</div>
+{% endblock %}
