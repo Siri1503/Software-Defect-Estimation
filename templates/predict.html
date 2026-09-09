@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Predict Defect{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">Prediction</p><h1>Estimate software defect risk</h1><p>Current model: <strong>{{ selected_model }}</strong></p></section>
+<div class="grid two">
+  <article class="card">
+    <form method="post" class="form-grid">
+      {% for f in features %}
+      <label><span>{{ f }}</span><input type="number" name="{{ f }}" step="any" value="0" required></label>
+      {% endfor %}
+      <button class="btn primary full" type="submit">Predict Defect</button>
+    </form>
+  </article>
+  <article class="card result-panel">
+    {% if prediction %}
+      <p class="eyebrow">Prediction Result</p>
+      <h2>{{ prediction }}</h2>
+      {% if probability is not none %}<div class="accuracy">{{ probability }}%</div><p>Model confidence</p>{% endif %}
+    {% else %}
+      <h3>Enter software metrics</h3>
+      <p>Provide the 16 project metrics to classify the module as defective or non-defective.</p>
+    {% endif %}
+  </article>
+</div>
+{% endblock %}
