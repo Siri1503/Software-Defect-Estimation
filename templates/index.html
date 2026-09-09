@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Home · Software Defect Estimation{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">Machine Learning for Software Quality</p>
+    <h1>Predict defect-prone software modules before release.</h1>
+    <p class="lead">Upload software-metric data, preprocess it, compare multiple classifiers, and estimate whether a module is likely to contain defects.</p>
+    <div class="actions">
+      <a class="btn primary" href="{{ url_for('models') }}">Train Models</a>
+      <a class="btn" href="{{ url_for('predict') }}">Run Prediction</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="metric"><span>{{ rows }}</span><small>dataset rows</small></div>
+    <div class="metric"><span>{{ features }}</span><small>software metrics</small></div>
+    <div class="metric"><span>8+</span><small>ML models</small></div>
+  </div>
+</section>
+<section class="grid three">
+  <article class="card"><h3>1. Upload & View</h3><p>Bring your own CSV or use the included generated software-metrics dataset.</p></article>
+  <article class="card"><h3>2. Train & Compare</h3><p>Evaluate Random Forest, SVM, Gradient Boosting, Extra Trees and optional boosting libraries.</p></article>
+  <article class="card"><h3>3. Predict Defects</h3><p>Enter module metrics manually and classify the module as defective or non-defective.</p></article>
+</section>
+{% endblock %}
