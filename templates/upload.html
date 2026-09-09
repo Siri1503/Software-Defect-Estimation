@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Upload Dataset{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">Dataset</p><h1>Upload software metrics</h1><p>CSV must include the required features and a binary <code>{{ target }}</code> column.</p></section>
+<div class="card narrow">
+  <form method="post" enctype="multipart/form-data" class="stack">
+    <label class="dropzone">Choose CSV file<input type="file" name="dataset" accept=".csv" required></label>
+    <button class="btn primary" type="submit">Upload Dataset</button>
+    <a class="btn" href="{{ url_for('reset_demo') }}">Restore Demo Dataset</a>
+  </form>
+</div>
+<div class="card"><h3>Required columns</h3><div class="chips">{% for f in features %}<span>{{ f }}</span>{% endfor %}<span>{{ target }}</span></div></div>
+{% endblock %}
