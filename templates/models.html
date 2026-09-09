@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Train Models{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">Model Training</p><h1>Train and evaluate classifiers</h1><p>Select a model and calculate real test accuracy from the current dataset.</p></section>
+<div class="grid two">
+  <article class="card">
+    <form method="post" class="stack">
+      <label for="model">Machine learning model</label>
+      <select id="model" name="model" required>
+        <option value="">Select a model</option>
+        {% for name in model_names %}<option value="{{ name }}">{{ name }}</option>{% endfor %}
+      </select>
+      <button class="btn primary" type="submit">Train Model</button>
+    </form>
+  </article>
+  <article class="card">
+    {% if result %}
+      <p class="eyebrow">Result</p>
+      <h2>{{ result.name }}</h2>
+      <div class="accuracy">{{ result.accuracy }}%</div>
+      <p>Test-set accuracy</p>
+      <div class="report-grid">
+        <div><span>{{ (result.report['0']['precision'] * 100)|round(1) }}%</span><small>Class 0 precision</small></div>
+        <div><span>{{ (result.report['1']['precision'] * 100)|round(1) }}%</span><small>Class 1 precision</small></div>
+        <div><span>{{ (result.report['0']['recall'] * 100)|round(1) }}%</span><small>Class 0 recall</small></div>
+        <div><span>{{ (result.report['1']['recall'] * 100)|round(1) }}%</span><small>Class 1 recall</small></div>
+      </div>
+      <a class="btn" href="{{ url_for('predict') }}">Use this model for prediction</a>
+    {% else %}
+      <h3>Model comparison</h3>
+      <p>The project report references CatBoost, XGBoost, SVM, LightGBM, Random Forest, Gradient Boosting, Hybrid Model and Extra Trees. Optional libraries appear here when installed.</p>
+    {% endif %}
+  </article>
+</div>
+{% endblock %}
