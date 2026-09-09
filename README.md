@@ -1,10 +1,15 @@
 # Software Defect Estimation
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Flask](https://img.shields.io/badge/Flask-Web%20App-lightgrey)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange)
+![Status](https://img.shields.io/badge/status-portfolio%20project-success)
+
 A Flask-based machine learning application for estimating whether a software module is likely to be defective using software complexity and code metrics.
 
 ## Project overview
 
-The application follows the workflow described in the project report: load a dataset, inspect the data, preprocess it, train multiple classifiers, compare model performance, and predict whether a software module is defective.
+The application follows the workflow described in the original project documentation: load a dataset, inspect the data, preprocess it, train multiple classifiers, compare model performance, and predict whether a software module is defective.
 
 The included implementation uses a generated software-metrics dataset by default, so the project runs without requiring the original dataset. You can also upload your own CSV with the expected columns.
 
@@ -32,7 +37,22 @@ The application supports:
 - LightGBM
 - Hybrid soft-voting ensemble
 
-XGBoost, CatBoost, and LightGBM are shown when those libraries are installed.
+XGBoost, CatBoost, and LightGBM are enabled when those libraries are installed.
+
+## Historical results from the original project report
+
+The original output documentation reported the following approximate accuracies. These values are included for historical comparison only; the rebuilt application calculates its own accuracy from the active dataset and does not hardcode them.
+
+| Model | Reported accuracy |
+|---|---:|
+| CatBoost | ~85% |
+| XGBoost | ~81% |
+| SVM | ~51% |
+| LightGBM | ~85% |
+| Random Forest | ~86% |
+| Gradient Boosting | ~81% |
+| Hybrid Model | ~87.66% |
+| Extra Trees Classifier | ~87.12% |
 
 ## Input metrics
 
@@ -105,6 +125,12 @@ Manual Software-Metric Input
    ↓
 Defective / Non-Defective Prediction
 ```
+
+## Original UI reference
+
+The reconstructed frontend is based on the original output screens, including the dark security-themed layout, dataset upload page, preprocessing screen, model training pages, and manual defect-prediction form.
+
+See [`docs/original-results.md`](docs/original-results.md) for a concise record of the original output screens and reported model results.
 
 ## Notes
 
