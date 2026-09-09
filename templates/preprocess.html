@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Preprocessing{% endblock %}
+{% block content %}
+<section class="page-head"><p class="eyebrow">Preprocessing</p><h1>Prepare the dataset</h1><p>The app validates required columns, coerces numeric values, fills missing feature values with 0, and performs a stratified 80/20 train-test split.</p></section>
+<section class="grid four">
+  <article class="card metric-card"><span>{{ stats.rows }}</span><small>Total rows</small></article>
+  <article class="card metric-card"><span>{{ stats.missing }}</span><small>Missing values</small></article>
+  <article class="card metric-card"><span>{{ stats.duplicates }}</span><small>Duplicate rows</small></article>
+  <article class="card metric-card"><span>{{ stats.train }} / {{ stats.test }}</span><small>Train / Test</small></article>
+</section>
+<section class="grid two">
+  <article class="card"><h3>Class distribution</h3><p><strong>{{ stats.defective }}</strong> defective modules</p><p><strong>{{ stats.non_defective }}</strong> non-defective modules</p></article>
+  <article class="card"><h3>Processing flow</h3><ol><li>Load CSV</li><li>Validate metric columns</li><li>Convert features to numeric</li><li>Fill missing values</li><li>Stratified train/test split</li></ol></article>
+</section>
+{% endblock %}
